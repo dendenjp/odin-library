@@ -7,6 +7,7 @@ const inputContanerModal = document.querySelector('.form-modal');
 const outerModal = document.querySelector('outer-modal');
 
 let myLibrary = [];
+
 const hobbit = new Book('The Hobbit', 'JRR Tolkien', '495', 'Read');
 const gameOfThrones = new Book(
     'Game of Thrones',
@@ -16,9 +17,9 @@ const gameOfThrones = new Book(
 );
 const lotr = new Book('The Lord of the Rings', 'Tolkien', '666', 'Not read');
 
-myLibrary.push(hobbit);
-myLibrary.push(gameOfThrones);
-myLibrary.push(lotr);
+// myLibrary.push(hobbit);
+// myLibrary.push(gameOfThrones);
+// myLibrary.push(lotr);
 
 function Book(title, author, pages, status) {
     this.title = title;
@@ -47,7 +48,28 @@ gridContainer.addEventListener('click', function (e) {
 addBookEl.addEventListener('click', (e) => {
     e.preventDefault();
     openModal();
-    addBookToLibrary();
+});
+
+formContainer.addEventListener('submit', function (e) {
+    e.preventDefault();
+    console.log(e.target);
+    const newBookTitle = document.querySelector('#title');
+    const newBookAuthor = document.querySelector('#author');
+    const newBookPages = document.querySelector('#pages');
+    const newBookStatus = document.querySelector('#status');
+    const submit = document.querySelector('#submit');
+    const newBook = new Book(
+        newBookTitle.value,
+        newBookAuthor.value,
+        newBookPages.value,
+        newBookStatus.value
+    );
+    console.log(newBookTitle.value);
+
+    addBookToLibrary(newBook);
+    formContainer.reset();
+    closeModal();
+    displayBooks();
 });
 
 function displayBooks() {
@@ -63,6 +85,7 @@ function displayBooks() {
         bookCardDelete.classList.add('delete-card');
 
         let bookCardDeleteButton = document.createElement('button');
+        bookCardDeleteButton.classList.add('delete-card-button');
         bookCardDeleteButton.textContent = 'x';
 
         let bookCardInfo = document.createElement('div');
@@ -94,26 +117,12 @@ function displayBooks() {
     });
 }
 
-function addBookToLibrary() {
-    formContainer.addEventListener('submit', function (e) {
-        e.preventDefault();
-        console.log(e.target);
-        const newBookTitle = document.querySelector('#title');
-        const newBookAuthor = document.querySelector('#author');
-        const newBookPages = document.querySelector('#pages');
-        const newBookStatus = document.querySelector('#status');
-        const submit = document.querySelector('#submit');
-        const newBook = new Book(
-            newBookTitle.value,
-            newBookAuthor.value,
-            newBookPages.value,
-            newBookStatus.value
-        );
-        console.log(newBookTitle.value);
-        myLibrary.push(newBook);
-
-        displayBooks();
-        formContainer.reset();
-        closeModal();
-    });
+function clearLibrary() {
+    booksContainer.innerHTML = '';
 }
+function addBookToLibrary(newBook) {
+    clearLibrary();
+    myLibrary.push(newBook);
+}
+
+console.log(myLibrary);
