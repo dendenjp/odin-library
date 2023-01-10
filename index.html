@@ -54,27 +54,23 @@
             <footer class="footer">Copyright D</footer>
         </div>
         <div class="form-modal hidden">
-            <form action="">
-                <div class="form-row">
-                    <label for="title">Title:</label>
-                    <input id="title" name="title" type="text" />
-                </div>
-                <div class="form-row">
-                    <label for="author">Author:</label>
-                    <input id="author" name="author" type="text" />
-                </div>
-                <div class="form-row">
-                    <label for="pages">Total pages:</label>
-                    <input id="pages" name="pages" type="text" />
-                </div>
-                <div class="form-row">
-                    <label for="status">Status:</label><br />
-                    <select name="status" id="status">
-                        <option value="read">Read</option>
-                        <option value="not read">Not read</option>
-                    </select>
-                </div>
-                <button class="submit-btn" type="submit">Submit</button>
+            <form class="form-container">
+                <label for="title">Title:</label>
+                <input id="title" name="title" type="text" />
+
+                <label for="author">Author:</label>
+                <input id="author" name="author" type="text" />
+
+                <label for="pages">Total pages:</label>
+                <input id="pages" name="pages" type="text" />
+
+                <label for="status">Status:</label><br />
+                <select name="status" id="status">
+                    <option value="read">Read</option>
+                    <option value="not read">Not read</option>
+                </select>
+
+                <input id="submit" type="submit" />
             </form>
         </div>
     </body>
