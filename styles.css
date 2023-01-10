@@ -96,7 +96,7 @@ html {
     position: relative;
 }
 
-.delete-card > button {
+.delete-card-button {
     display: flex;
     justify-content: center;
     align-items: center;
