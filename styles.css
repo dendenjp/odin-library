@@ -117,6 +117,10 @@ html {
     right: -15px;
 }
 
+.delete-card-button:hover {
+    cursor: pointer;
+}
+
 .book-info {
     display: flex;
     flex-direction: column;
