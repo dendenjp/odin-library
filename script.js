@@ -8,36 +8,6 @@ const outerModal = document.querySelector('outer-modal');
 
 let myLibrary = [];
 
-const hobbit = new Book('The Hobbit', 'JRR Tolkien', '495', 'Read');
-const gameOfThrones = new Book(
-    'Game of Thrones',
-    'G.R.R. Martin',
-    '495',
-    'Read'
-);
-const lotr = new Book('The Lord of the Rings', 'Tolkien', '666', 'Not read');
-
-// myLibrary.push(hobbit);
-// myLibrary.push(gameOfThrones);
-// myLibrary.push(lotr);
-
-function Book(title, author, pages, status) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.status = status;
-}
-
-function openModal() {
-    gridContainer.classList.add('is-blurred');
-    inputContanerModal.classList.remove('hidden');
-}
-
-function closeModal() {
-    gridContainer.classList.remove('is-blurred');
-    inputContanerModal.classList.add('hidden');
-}
-
 gridContainer.addEventListener('click', function (e) {
     e.preventDefault();
     if (!e.target.closest('.form-modal') && !e.target.matches('.add-book')) {
@@ -72,29 +42,54 @@ formContainer.addEventListener('submit', function (e) {
     displayBooks();
 });
 
+function Book(title, author, pages, status) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.status = status;
+}
+
+function openModal() {
+    gridContainer.classList.add('is-blurred');
+    inputContanerModal.classList.remove('hidden');
+}
+
+function closeModal() {
+    gridContainer.classList.remove('is-blurred');
+    inputContanerModal.classList.add('hidden');
+}
+
+function removeBook(e) {
+    e.preventDefault();
+    const index = e.target.parentNode.parentNode.dataset.index;
+    myLibrary.splice(index, 1);
+    clearLibrary();
+    displayBooks();
+}
+
 function displayBooks() {
     myLibrary.forEach((book, index) => {
         console.log(index);
         console.log(book);
 
-        let bookCard = document.createElement('div');
+        const bookCard = document.createElement('div');
         bookCard.classList.add('card');
         bookCard.dataset.index = index;
 
-        let bookCardDelete = document.createElement('div');
+        const bookCardDelete = document.createElement('div');
         bookCardDelete.classList.add('delete-card');
 
-        let bookCardDeleteButton = document.createElement('button');
+        const bookCardDeleteButton = document.createElement('button');
         bookCardDeleteButton.classList.add('delete-card-button');
         bookCardDeleteButton.textContent = 'x';
 
-        let bookCardInfo = document.createElement('div');
+        const bookCardInfo = document.createElement('div');
         bookCardInfo.classList.add('book-info');
 
-        let bookTitle = document.createElement('h1');
-        let bookAuthor = document.createElement('p');
-        let bookPages = document.createElement('p');
-        let bookStatus = document.createElement('p');
+        const bookTitle = document.createElement('h1');
+        const bookAuthor = document.createElement('p');
+        const bookPages = document.createElement('p');
+        const bookStatus = document.createElement('p');
 
         bookTitle.classList.add('title');
         bookAuthor.classList.add('author');
@@ -114,6 +109,8 @@ function displayBooks() {
         bookCardInfo.appendChild(bookAuthor);
         bookCardInfo.appendChild(bookPages);
         bookCardInfo.appendChild(bookStatus);
+
+        bookCardDeleteButton.addEventListener('click', removeBook);
     });
 }
 
@@ -125,4 +122,16 @@ function addBookToLibrary(newBook) {
     myLibrary.push(newBook);
 }
 
-console.log(myLibrary);
+// console.log(myLibrary);
+
+// const hobbit = new Book('The Hobbit', 'JRR Tolkien', '295', 'read');
+// const harry = new Book('Harry Potter', 'JK Rowling', '295', 'read');
+// const got = new Book('Game of Thrones', 'George R.R. Martin', '295', 'read');
+
+// myLibrary.push(hobbit);
+// myLibrary.push(harry);
+// myLibrary.push(got);
+
+// console.log(myLibrary);
+// myLibrary.splice(2, 1);
+// console.log(myLibrary);
