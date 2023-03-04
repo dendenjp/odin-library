@@ -1,24 +1,56 @@
 'use strict';
-const addBookEl = document.querySelector('.add-book');
-const formContainer = document.querySelector('.form-container');
-const booksContainer = document.querySelector('.books-container');
-const gridContainer = document.querySelector('.grid-container');
-const inputContanerModal = document.querySelector('.form-modal');
-const outerModal = document.querySelector('outer-modal');
-
-let myLibrary = [];
-
-gridContainer.addEventListener('click', function (e) {
-    e.preventDefault();
-    if (!e.target.closest('.form-modal') && !e.target.matches('.add-book')) {
-        closeModal();
+class Book {
+    constructor(title, author, pages, status) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.status = status;
     }
-});
+}
+
+class Library {
+    constructor() {
+        this.addBookEl = document.querySelector('.add-book');
+        this.formContainer = document.querySelector('.form-container');
+        this.booksContainer = document.querySelector('.books-container');
+        this.gridContainer = document.querySelector('.grid-container');
+        this.inputContanerModal = document.querySelector('.form-modal');
+        this.outerModal = document.querySelector('outer-modal');
+
+        this.myLibrary = [];
+
+        this.gridContainer.addEventListener(
+            'click',
+            this.closeModalIfClickedOutside
+        );
+    }
+
+    closeModalIfClickedOutside(e) {
+        e.preventDefault();
+        if (
+            !e.target.closest('.form-modal') &&
+            !e.target.matches('.add-book')
+        ) {
+            closeModal();
+        }
+    }
+}
+
+// gridContainer.addEventListener('click', function (e) {
+//     e.preventDefault();
+//     if (!e.target.closest('.form-modal') && !e.target.matches('.add-book')) {
+//         closeModal();
+//     }
+// });
 
 addBookEl.addEventListener('click', (e) => {
     e.preventDefault();
     openModal();
 });
+function openModal() {
+    gridContainer.classList.add('is-blurred');
+    inputContanerModal.classList.remove('hidden');
+}
 
 formContainer.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -41,18 +73,6 @@ formContainer.addEventListener('submit', function (e) {
     closeModal();
     displayBooks();
 });
-
-function Book(title, author, pages, status) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.status = status;
-}
-
-function openModal() {
-    gridContainer.classList.add('is-blurred');
-    inputContanerModal.classList.remove('hidden');
-}
 
 function closeModal() {
     gridContainer.classList.remove('is-blurred');
@@ -122,16 +142,4 @@ function addBookToLibrary(newBook) {
     myLibrary.push(newBook);
 }
 
-// console.log(myLibrary);
-
-// const hobbit = new Book('The Hobbit', 'JRR Tolkien', '295', 'read');
-// const harry = new Book('Harry Potter', 'JK Rowling', '295', 'read');
-// const got = new Book('Game of Thrones', 'George R.R. Martin', '295', 'read');
-
-// myLibrary.push(hobbit);
-// myLibrary.push(harry);
-// myLibrary.push(got);
-
-// console.log(myLibrary);
-// myLibrary.splice(2, 1);
-// console.log(myLibrary);
+const library = new Library();
