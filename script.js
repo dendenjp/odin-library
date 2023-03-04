@@ -17,11 +17,19 @@ class Library {
         this.gridContainer = document.querySelector('.grid-container');
         this.inputContanerModal = document.querySelector('.form-modal');
         this.outerModal = document.querySelector('outer-modal');
+        this.newBookTitle = document.querySelector('#title');
+        this.newBookAuthor = document.querySelector('#author');
+        this.newBookPages = document.querySelector('#pages');
+        this.newBookStatus = document.querySelector('#status');
+        this.submit = document.querySelector('#submit');
+
+        // Event listeners
         this.gridContainer.addEventListener(
             'click',
             this.closeModalIfClickedOutside
         );
         this.addBookEl.addEventListener('click', this.openModal);
+        this.formContainer.addEventListener('click', this.bookFormHandler);
     }
 
     closeModalIfClickedOutside = (e) => {
@@ -44,29 +52,30 @@ class Library {
         this.gridContainer.classList.remove('is-blurred');
         this.inputContanerModal.classList.add('hidden');
     };
+
+    bookFormHandler = (e) => {
+        e.preventDefault();
+
+        const newBook = new Book(
+            this.newBookTitle.value,
+            this.newBookAuthor.value,
+            this.newBookPages.value,
+            this.newBookStatus.value
+        );
+
+        this.addBookToLibrary(newBook);
+        this.formContainer.reset();
+        this.closeModal();
+        this.displayBooks();
+    };
+
+    addBookToLibrary = (newBook) => {
+        this.clearLibrary();
+        this.myLibrary.push(newBook);
+    };
+
+    clearLibrary = () => (this.booksContainer.innerHTML = '');
 }
-
-formContainer.addEventListener('submit', function (e) {
-    e.preventDefault();
-    console.log(e.target);
-    const newBookTitle = document.querySelector('#title');
-    const newBookAuthor = document.querySelector('#author');
-    const newBookPages = document.querySelector('#pages');
-    const newBookStatus = document.querySelector('#status');
-    const submit = document.querySelector('#submit');
-    const newBook = new Book(
-        newBookTitle.value,
-        newBookAuthor.value,
-        newBookPages.value,
-        newBookStatus.value
-    );
-    console.log(newBookTitle.value);
-
-    addBookToLibrary(newBook);
-    formContainer.reset();
-    closeModal();
-    displayBooks();
-});
 
 function removeBook(e) {
     e.preventDefault();
@@ -75,6 +84,27 @@ function removeBook(e) {
     clearLibrary();
     displayBooks();
 }
+
+// formContainer.addEventListener('submit', function (e) {
+//     e.preventDefault();
+//     const newBookTitle = document.querySelector('#title');
+//     const newBookAuthor = document.querySelector('#author');
+//     const newBookPages = document.querySelector('#pages');
+//     const newBookStatus = document.querySelector('#status');
+//     const submit = document.querySelector('#submit');
+//     const newBook = new Book(
+//         newBookTitle.value,
+//         newBookAuthor.value,
+//         newBookPages.value,
+//         newBookStatus.value
+//     );
+//     console.log(newBookTitle.value);
+
+//     addBookToLibrary(newBook);
+//     formContainer.reset();
+//     closeModal();
+//     displayBooks();
+// });
 
 function displayBooks() {
     myLibrary.forEach((book, index) => {
@@ -121,14 +151,6 @@ function displayBooks() {
 
         bookCardDeleteButton.addEventListener('click', removeBook);
     });
-}
-
-function clearLibrary() {
-    booksContainer.innerHTML = '';
-}
-function addBookToLibrary(newBook) {
-    clearLibrary();
-    myLibrary.push(newBook);
 }
 
 const library = new Library();
