@@ -10,46 +10,40 @@ class Book {
 
 class Library {
     constructor() {
+        this.myLibrary = [];
         this.addBookEl = document.querySelector('.add-book');
         this.formContainer = document.querySelector('.form-container');
         this.booksContainer = document.querySelector('.books-container');
         this.gridContainer = document.querySelector('.grid-container');
         this.inputContanerModal = document.querySelector('.form-modal');
         this.outerModal = document.querySelector('outer-modal');
-
-        this.myLibrary = [];
-
         this.gridContainer.addEventListener(
             'click',
             this.closeModalIfClickedOutside
         );
+        this.addBookEl.addEventListener('click', this.openModal);
     }
 
-    closeModalIfClickedOutside(e) {
+    closeModalIfClickedOutside = (e) => {
         e.preventDefault();
         if (
             !e.target.closest('.form-modal') &&
             !e.target.matches('.add-book')
         ) {
-            closeModal();
+            this.closeModal();
         }
-    }
-}
+    };
 
-// gridContainer.addEventListener('click', function (e) {
-//     e.preventDefault();
-//     if (!e.target.closest('.form-modal') && !e.target.matches('.add-book')) {
-//         closeModal();
-//     }
-// });
+    openModal = (e) => {
+        e.preventDefault();
+        this.gridContainer.classList.add('is-blurred');
+        this.inputContanerModal.classList.remove('hidden');
+    };
 
-addBookEl.addEventListener('click', (e) => {
-    e.preventDefault();
-    openModal();
-});
-function openModal() {
-    gridContainer.classList.add('is-blurred');
-    inputContanerModal.classList.remove('hidden');
+    closeModal = () => {
+        this.gridContainer.classList.remove('is-blurred');
+        this.inputContanerModal.classList.add('hidden');
+    };
 }
 
 formContainer.addEventListener('submit', function (e) {
@@ -73,11 +67,6 @@ formContainer.addEventListener('submit', function (e) {
     closeModal();
     displayBooks();
 });
-
-function closeModal() {
-    gridContainer.classList.remove('is-blurred');
-    inputContanerModal.classList.add('hidden');
-}
 
 function removeBook(e) {
     e.preventDefault();
