@@ -1,213 +1,218 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
 }
 
 html {
-    font-size: 62.5%;
-    font-family: sans-serif;
+	font-size: 62.5%;
+	font-family: sans-serif;
 }
 
 .grid-container {
-    display: grid;
+	display: grid;
 
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 10fr 0.5fr;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr 10fr 0.5fr;
 
-    height: 100vh;
-    width: 100%;
+	height: 100vh;
+	width: 100%;
 
-    align-items: center;
+	align-items: center;
 }
 
 .head {
-    font-size: 3rem;
-    width: 100%;
-    height: 100%;
-    background-color: rgb(25, 146, 212);
-    color: #fff;
+	font-size: 3rem;
+	width: 100%;
+	height: 100%;
+	background-color: rgb(25, 146, 212);
+	color: #fff;
 
-    display: flex;
-    justify-content: space-between;
+	display: flex;
+	justify-content: space-between;
 
-    align-items: center;
+	align-items: center;
 
-    padding: 3rem 3rem 3rem 3rem;
-    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.158);
+	padding: 3rem 3rem 3rem 3rem;
+	box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.158);
 }
 
 .head > header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
 }
 
 .add-book {
-    border-style: none;
-    padding: 1rem 2rem 1rem 2rem;
-    background-color: rgb(222, 175, 12);
-    color: #fff;
-    font-weight: bold;
-    border-radius: 10px;
-    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.158);
+	border-style: none;
+	padding: 1rem 2rem 1rem 2rem;
+	background-color: rgb(222, 175, 12);
+	color: #fff;
+	font-weight: bold;
+	border-radius: 10px;
+	box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.158);
 }
 
 .add-book:hover {
-    cursor: pointer;
-    background-color: rgb(242, 191, 13);
+	cursor: pointer;
+	background-color: rgb(242, 191, 13);
 }
 
 .books-container {
-    display: grid;
-    gap: 4rem;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 280px));
-    width: 100%;
-    height: 100%;
-    background-color: aliceblue;
-    align-items: center;
-    justify-content: center;
+	display: grid;
+	gap: 4rem;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 280px));
+	width: 100%;
+	height: 100%;
+	background-color: aliceblue;
+	align-items: center;
+	justify-content: center;
 
-    padding: 4rem;
+	padding: 4rem;
 }
 
 .card {
-    font-size: 1.5rem;
-    background-color: #fff;
-    border-radius: 10px;
-    height: 300px;
-    text-align: center;
+	font-size: 1.5rem;
+	background-color: #fff;
+	border-radius: 10px;
+	height: 300px;
+	text-align: center;
 
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 4fr;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr 4fr;
 
-    padding: 2rem 2.5rem;
+	padding: 2rem 2.5rem;
 
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.158);
+	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.158);
 }
 
 .delete-card {
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
 
-    position: relative;
+	position: relative;
 }
 
 .delete-card-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 
-    height: 2rem;
-    width: 2rem;
-    font-size: 1.5rem;
-    border-radius: 50%;
+	height: 2rem;
+	width: 2rem;
+	font-size: 1.5rem;
+	border-radius: 50%;
 
-    border: none;
-    background-color: grey;
+	border: none;
+	background-color: grey;
 
-    color: #fff;
+	color: #fff;
 
-    position: absolute;
+	position: absolute;
 
-    top: -10px;
-    right: -15px;
+	top: -10px;
+	right: -15px;
 }
 
 .delete-card-button:hover {
-    cursor: pointer;
+	cursor: pointer;
 }
 
 .book-info {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
 }
 
 .title {
-    flex: 1;
+	flex: 1;
 }
 
 .footer {
-    width: 100%;
-    text-align: center;
-    font-size: 1.5rem;
-    background-color: #f5f5f5;
-    padding: 1rem;
+	width: 100%;
+	text-align: center;
+	font-size: 1.5rem;
+	background-color: #f5f5f5;
+	padding: 1rem;
 }
 
 /* MODAL WINDOW */
 
 .hidden {
-    display: none;
+	display: none;
 }
 
 .is-blurred {
-    filter: blur(2px);
-    -webkit-filter: blur(2px);
+	filter: blur(2px);
+	-webkit-filter: blur(2px);
 }
 
 .form-modal {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 
-    width: 30%;
-    padding: 6rem;
+	width: 30%;
+	padding: 6rem;
 
-    background-color: rgb(255, 255, 255);
-    /* padding: 6rem; */
-    border-radius: 5px;
-    box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
-    z-index: 10;
+	background-color: rgb(255, 255, 255);
+	/* padding: 6rem; */
+	border-radius: 5px;
+	box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+	z-index: 10;
 
-    font-size: 2rem;
+	font-size: 2rem;
 }
 
 form {
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
+	display: flex;
+	flex-direction: column;
+	gap: 3rem;
 }
 
 form > button,
 input[type='submit'] {
-    width: 100%;
-    height: 5rem;
-    border-style: none;
-    background-color: #006400;
-    border-radius: 5px;
-    font-size: 2rem;
-    color: #fff;
+	width: 100%;
+	height: 5rem;
+	border-style: none;
+	background-color: #006400;
+	border-radius: 5px;
+	font-size: 2rem;
+	color: #fff;
 }
 
 form > button:hover,
 input[type='submit']:hover {
-    background-color: #009900;
+	background-color: #009900;
 }
 
 .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(3px);
-    z-index: 5;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.6);
+	backdrop-filter: blur(3px);
+	z-index: 5;
 }
 
 input[type='text'] {
-    width: 100%;
-    padding: 1rem 2rem;
+	width: 100%;
+	padding: 1rem 2rem;
+}
+
+input[type='number'] {
+	width: 100%;
+	padding: 1rem 2rem;
 }
 
 select {
-    width: 100%;
-    padding: 1rem 2rem;
-    font-size: 2rem;
+	width: 100%;
+	padding: 1rem 2rem;
+	font-size: 2rem;
 }

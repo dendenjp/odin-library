@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Odin Library</title>
-        <link rel="stylesheet" href="styles.css" />
-        <script defer src="script.js"></script>
-        <script
-            type="module"
-            src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
-        ></script>
-        <script
-            nomodule
-            src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
-        ></script>
-    </head>
-    <body>
-        <div class="grid-container">
-            <div class="head">
-                <header>
-                    <ion-icon name="library-outline"></ion-icon>My Library
-                </header>
-                <button class="add-book">Add Book+</button>
-            </div>
-            <div class="books-container">
-                <!-- <div class="card">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Odin Library</title>
+		<link rel="stylesheet" href="styles.css" />
+		<script defer src="script.js"></script>
+		<script
+			type="module"
+			src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+		></script>
+		<script
+			nomodule
+			src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+		></script>
+	</head>
+	<body>
+		<div class="grid-container">
+			<div class="head">
+				<header>
+					<ion-icon name="library-outline"></ion-icon>My Library
+				</header>
+				<button class="add-book">Add Book+</button>
+			</div>
+			<div class="books-container">
+				<!-- <div class="card">
                     <div class="icons">
                         <ion-icon name="trash-outline"></ion-icon>
                         <ion-icon name="book-outline"></ion-icon>
@@ -50,31 +50,31 @@
                         <p class="status">Not read yet</p>
                     </div>
                 </div> -->
-            </div>
-            <footer class="footer">
-                Copyright &copy; 2023 dendenjp |
-                <a href="https://github.com/dendenjp">GitHub</a>
-            </footer>
-        </div>
-        <div class="form-modal hidden">
-            <form class="form-container">
-                <label for="title">Title:</label>
-                <input id="title" name="title" type="text" required />
+			</div>
+			<footer class="footer">
+				Copyright &copy; 2023 dendenjp |
+				<a href="https://github.com/dendenjp">GitHub</a>
+			</footer>
+		</div>
+		<div class="form-modal hidden">
+			<form class="form-container">
+				<label for="title">Title:</label>
+				<input id="title" name="title" type="text" required />
 
-                <label for="author">Author:</label>
-                <input id="author" name="author" type="text" required />
+				<label for="author">Author:</label>
+				<input id="author" name="author" type="text" required />
 
-                <label for="pages">Total pages:</label>
-                <input id="pages" name="pages" type="text" required />
+				<label for="pages">Total pages:</label>
+				<input id="pages" name="pages" type="number" required />
 
-                <label for="status">Status:</label>
-                <select name="status" id="status">
-                    <option value="read">Read</option>
-                    <option value="not read">Not read</option>
-                </select>
+				<label for="status">Status:</label>
+				<select name="status" id="status">
+					<option value="read">Read</option>
+					<option value="not read">Not read</option>
+				</select>
 
-                <input id="submit" type="submit" />
-            </form>
-        </div>
-    </body>
+				<input id="submit" type="submit" />
+			</form>
+		</div>
+	</body>
 </html>
